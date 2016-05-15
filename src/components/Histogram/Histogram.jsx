@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
+import Axis from './Axis';
 
 class Histogram extends Component {
   constructor(props) {
@@ -57,6 +58,7 @@ class Histogram extends Component {
         <g className="bars">
           {bars.map(::this.makeBar)}
         </g>
+        <Axis {...this.props} data={bars} />
       </g>
     );
   }

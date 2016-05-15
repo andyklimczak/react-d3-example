@@ -8,7 +8,8 @@ class H1BGraph extends Component {
     super();
 
     this.state = {
-      rawData: []
+      rawData: [],
+      dataFilter: () => true
     };
   }
 
@@ -78,6 +79,10 @@ class H1BGraph extends Component {
     return title;
   }
 
+  updateDataFilter(filter) {
+    this.setState({dataFilter: filter});
+  }
+
   render() {
     if (!this.state.rawData.length) {
       return (
@@ -96,12 +101,14 @@ class H1BGraph extends Component {
     },
     fullWidth = 700;
 
+    let filteredData = this.state.rawData.filter(this.state.dataFilter);
+
     return (
       <div>
         <svg width={fullWidth} height={params.height}>
-          <Histogram {...params} data={this.state.rawData} />
+          <Histogram {...params} data={filteredData} />
         </svg>
-        <Controls data={this.state.rawData} updateDataFilter={() => true}/>
+        <Controls data={this.state.rawData} updateDataFilter={::this.updateDataFilter}/>
       </div>
     );
   }

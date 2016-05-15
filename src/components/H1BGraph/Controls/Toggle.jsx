@@ -14,6 +14,7 @@ class Toggle extends Component {
   handleClick(event) {
     let newValue = !this.state.value;
     this.setState({value: newValue});
+    this.props.onClick(this.props.name, newValue);
   }
 
   render() {

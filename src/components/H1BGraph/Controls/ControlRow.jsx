@@ -4,7 +4,12 @@ import Toggle from './Toggle';
 
 class ControlRow extends Component {
   makePick(picked, newState) {
+    let toggleValues = this.state.toggleValues;
 
+    toggleValues = _.mapValues(toggleValues, (value, key) => newState && key == picked);
+
+    this.props.updateDataFilter(picked, !newState);
+    this.setState({toggleValues: toggleValues});
   }
 
   componentWillMount() {

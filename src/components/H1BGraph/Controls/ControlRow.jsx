@@ -24,7 +24,7 @@ class ControlRow extends Component {
       label = name;
 
     if(this.props.capitalize) {
-      label = labe.toUpperCase();
+      label = label.toUpperCase();
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import d3 from 'd3';
 import Histogram from '../Histogram';
 import Controls from './Controls';
+import { Title, Description } from './Meta';
 
 class H1BGraph extends Component {
   constructor() {
@@ -105,6 +106,8 @@ class H1BGraph extends Component {
 
     return (
       <div>
+        <Title data={filteredData} />
+        <Description data={filteredData} allData={this.state.rawData} />
         <svg width={fullWidth} height={params.height}>
           <Histogram {...params} data={filteredData} />
         </svg>
